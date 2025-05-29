@@ -13,29 +13,29 @@ using namespace std;
 template <typename Graph>
 void generalTests(string structName) {
     { // Инициализация
-        IGraph* listGraph = new Graph(322);
-        assert(listGraph->VerticesCount() == 322);
-        delete listGraph;
+        IGraph* graph = new Graph(322);
+        assert(graph->VerticesCount() == 322);
+        delete graph;
     }
     { // Получение следующих вершин
-        IGraph* listGraph = new Graph(4);
-        listGraph->AddEdge(1, 0);
-        listGraph->AddEdge(1, 2);
-        vector<int> nexts = listGraph->GetNextVertices(1);
+        IGraph* graph = new Graph(4);
+        graph->AddEdge(1, 0);
+        graph->AddEdge(1, 2);
+        vector<int> nexts = graph->GetNextVertices(1);
         assert(nexts.size() == 2);
         assert(find(nexts.begin(), nexts.end(), 0) != nexts.end());
         assert(find(nexts.begin(), nexts.end(), 2) != nexts.end());
-        delete listGraph;
+        delete graph;
     }
     { // Получение предыдущих вершин
-        IGraph* listGraph = new Graph(4);
-        listGraph->AddEdge(0, 1);
-        listGraph->AddEdge(2, 1);
-        vector<int> prevs = listGraph->GetPrevVertices(1);
+        IGraph* graph = new Graph(4);
+        graph->AddEdge(0, 1);
+        graph->AddEdge(2, 1);
+        vector<int> prevs = graph->GetPrevVertices(1);
         assert(prevs.size() == 2);
         assert(find(prevs.begin(), prevs.end(), 0) != prevs.end());
         assert(find(prevs.begin(), prevs.end(), 2) != prevs.end());
-        delete listGraph;
+        delete graph;
     }
 
     cout << "general tests for " << structName << ": OK" << endl;
